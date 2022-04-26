@@ -22,7 +22,7 @@ public class ServletExController {
 
     @GetMapping("/error-404")
     public void error404 (HttpServletResponse response) throws IOException {
-        response.sendError(HttpServletResponse.SC_NOT_FOUND, "404 오류!");
+        response.sendError(HttpServletResponse.SC_NOT_FOUND, "404 오류!!");
     }
 
     @GetMapping("/error-500")

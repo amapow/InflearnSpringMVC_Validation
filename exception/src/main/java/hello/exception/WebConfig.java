@@ -18,7 +18,7 @@ public class WebConfig implements WebMvcConfigurer {
         filterFilterRegistrationBean.setFilter(new LogFilter());
         filterFilterRegistrationBean.setOrder(1);
         filterFilterRegistrationBean.addUrlPatterns("/*");
-        filterFilterRegistrationBean.setDispatcherTypes(DispatcherType.REQUEST, DispatcherType.ERROR);
+        filterFilterRegistrationBean.setDispatcherTypes(DispatcherType.REQUEST);
         return filterFilterRegistrationBean;
     }
 }

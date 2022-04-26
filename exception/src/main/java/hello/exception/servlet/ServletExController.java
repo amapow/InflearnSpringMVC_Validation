@@ -26,6 +26,12 @@ public class ServletExController {
         response.sendError(HttpServletResponse.SC_NOT_FOUND, "404 오류!!");
     }
 
+    @GetMapping("/error-400")
+    public void error400(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        log.info("{}", request.getDispatcherType());
+        response.sendError(HttpServletResponse.SC_BAD_REQUEST, "400 오류!!");
+    }
+
     @GetMapping("/error-500")
     public void error500(HttpServletResponse response) throws IOException {
         response.sendError(500);

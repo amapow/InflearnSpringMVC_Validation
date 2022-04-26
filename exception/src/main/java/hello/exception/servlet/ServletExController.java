@@ -21,12 +21,13 @@ public class ServletExController {
     }
 
     @GetMapping("/error-404")
-    public void error404 (HttpServletResponse response) throws IOException {
+    public void error404(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        log.info("{}", request.getDispatcherType());
         response.sendError(HttpServletResponse.SC_NOT_FOUND, "404 오류!!");
     }
 
     @GetMapping("/error-500")
-    public void error500 (HttpServletResponse response) throws IOException {
+    public void error500(HttpServletResponse response) throws IOException {
         response.sendError(500);
     }
 }

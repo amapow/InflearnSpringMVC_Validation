@@ -8,11 +8,27 @@ import hello.typeconverter.formatter.MyNumberFormatter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.format.FormatterRegistry;
+import org.springframework.http.MediaType;
+import org.springframework.web.servlet.config.annotation.ContentNegotiationConfigurer;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+import java.util.HashMap;
 
 @Slf4j
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
+
+    @Override
+    public void configureContentNegotiation(ContentNegotiationConfigurer configurer) {
+        HashMap<String, MediaType> mediaTypes = new HashMap<>();
+        mediaTypes.put("json", MediaType.APPLICATION_JSON);
+        mediaTypes.put("xml", MediaType.APPLICATION_XML);
+        configurer.favorPathExtension(true);
+        configurer.ignoreAcceptHeader(true);
+        configurer.useJaf(true);
+        configurer.defaultContentType(MediaType.APPLICATION_JSON);
+        configurer.mediaTypes(mediaTypes);
+    }
 
     @Override
     public void addFormatters(FormatterRegistry registry) {
